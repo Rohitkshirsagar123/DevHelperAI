@@ -1,0 +1,364 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Montserrat&family=Roboto+Condensed:wght@300&family=Roboto:wght@700&family=Slabo+27px&family=Tinos&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+
+  
+    font-family: 'Tinos', serif;
+}
+
+.light-mode {
+    background-color: rgb(230, 230, 250);
+    color: #333;
+}
+
+.dark-mode {
+    background-color: #333;
+    color: #fff;   
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+ .heading{
+    padding-bottom:20px ;
+    background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    -webkit-background-clip: text; /* Apply gradient to text only for WebKit browsers */
+    color: transparent; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.container span h1{
+    font-weight: 700;
+    font-size: 45px;
+}
+
+.subcontainer {
+    width: 85%;
+    height: 85%;
+    border: 2px solid rgb(17, 16, 16);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+
+
+
+
+
+/*-------------------- .input_sec  --------------------------- */
+.input_sec{
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+    padding: 20px 10px;
+   z-index: 999;
+}
+
+
+
+
+
+.inputTextarea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+   
+}
+
+.inputTextarea #send_btn{
+   position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    
+}
+.inputTextarea #mic {
+    position: absolute;
+    right: 60px;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+
+}
+.inputTextarea #mic:hover {
+    color: red !important;
+}
+/* .inputTextarea #send_btn:hover{
+   color: green !important;
+} */
+textarea{
+    width: 100%;
+    height: 50px;
+    padding: 12px 12px;
+    border-radius: 10px;
+    background-color: #333;
+    border: 2px solid black;
+    outline: 0;
+    color: White;
+    font-size: 17px;
+    max-height: 200px;
+    resize: none; /* Prevent textarea resizing */
+    overflow-y: hidden; /* Enable vertical scrolling */
+    font-family: 'Tinos', serif;
+   
+  
+}
+.textarea:hover{
+    border: 2px solid red;
+}
+
+.input_sec .icon_sec{
+    height: 42px;
+    padding: 2px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 38px;
+    color: black !important;
+    border: 1px solid black;
+   
+}
+.set_icon{
+    position: relative;
+}
+
+ .icon_sec:hover {
+    background-color: rgb(220, 215, 215); /* Change the hover color as needed */
+  }
+
+  .icon-name {
+    position: absolute;
+    top: -20px;/* Adjust the distance from the icon as needed */
+    left: 45%;
+    transform: translateX(-50%);
+    background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    -webkit-background-clip: text; /* Apply gradient to text only for WebKit browsers */
+    color: transparent; 
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+ 
+  .set_icon:hover .icon-name {
+    opacity: 1;
+  }
+
+
+/* -------------------------- question and answer section ------------------ */
+.result_sec{
+    padding: 20px;
+    height: 80%; /* Set your desired height */
+    overflow-y: auto;
+   /* Optional: Add a border for styling */
+    border-radius: 10px; 
+    flex: 1; /* Grow and take remaining vertical space */
+    overflow-y: auto;
+    border-radius: 10px;
+    position: relative;
+    max-height: calc(100% - 50px); 
+}
+
+/* Reset scrollbar styling to default */
+.result_sec::-webkit-scrollbar {
+    width: initial;
+}
+
+.result_sec::-webkit-scrollbar-thumb {
+    background-color: initial;
+}
+
+.result_sec::-webkit-scrollbar-thumb:hover {
+    background-color: initial;
+}
+
+.result_sec::-webkit-scrollbar-track {
+    background-color: initial;
+}
+
+.para_sec{
+    border: 1px solid black;
+    padding: 10px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    min-height: 60px;
+}
+
+.result_sec .user_name{
+    border: 1px solid black;
+    padding: 5px;
+    background-color: rgb(23, 24, 24);
+    color: white !important;
+    
+}
+
+.result_sec .text_sec{
+    padding-top: 15px;
+    font-size: 18px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    overflow: hidden;
+    word-spacing: 2px;
+    position: relative;
+}
+.result_sec .text_sec span{
+    position: absolute;
+    top: 10%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.result_sec .ans_sec{
+    background-color: #444343;
+    color: white;
+}
+
+
+/* ----------------------------- typing animation ---------------------------  */
+/* Variables */
+:root {
+    --dot-width: 10px;
+    --dot-color: black;
+    --speed: 1.5s;
+  }
+  
+  /* Typing Animation */
+  .typing {
+    position: relative;
+  }
+  
+  .typing span {
+    content: '';
+    animation: blink var(--speed) infinite;
+    animation-fill-mode: both;
+    height: var(--dot-width);
+    width: var(--dot-width);
+    background: var(--dot-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+  }
+  
+  .typing span:nth-child(2) {
+    animation-delay: 0.2s;
+    margin-left: calc(var(--dot-width) * 1.5);
+  }
+  
+  .typing span:nth-child(3) {
+    animation-delay: 0.4s;
+    margin-left: calc(var(--dot-width) * 3);
+  }
+  
+  /* Blink Animation */
+  @keyframes blink {
+    0% {
+      opacity: 0.1;
+    }
+    20% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.1;
+    }
+  }
+  
+
+
+  /* ----------------------- default text css ---------------- */
+
+  .defaultText {
+    position: absolute;
+    width: 100%;
+    /* height: 100%; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   
+}
+.defaultText h1{
+    font-size: 35px;
+    margin-top: 70px;
+    margin-bottom:20px ;
+}
+.defaultText h3{
+    font-size: 30px;
+}
+
+
+/* ------------------ media query ---------------------------------  */
+
+@media screen and ( max-width:600px) { 
+    .result_sec {
+        padding: 10px;
+    }
+    .defaultText {
+        position: absolute;
+        width: 100%;
+        /* height: 100%; */
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+       
+    }
+
+
+    .defaultText h1{
+        font-size: 25px;
+        margin-top: 70px;
+        margin-bottom:20px ;
+    }
+    .defaultText h3{
+        font-size: 20px;
+    }
+}
+
+
+
+
+@media screen and ( max-width:530px) { 
+
+    .input_sec {
+        display: block;
+        /* justify-content: center; */
+        width: 100%;
+        padding: 20px;
+        z-index: 999;
+        position: relative;
+    }
+
+    /* custom css */
+    .inputTextarea {
+        top:40px ;
+        margin-bottom: 20px;
+    }
+    .set_icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .set_icon #toggleBtn{
+        position: absolute;
+        right: 80px;
+    }
+}
