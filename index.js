@@ -17,7 +17,7 @@ const resultSection = document.querySelector("#outgoing");
 const delete_btn = document.querySelector("#delete");
 
 
-const apiKey = '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'; //  OpenAI API key
+const apiKey = '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'; //  OpenAI API key
 let userText;
 
 
