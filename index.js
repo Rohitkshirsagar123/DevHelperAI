@@ -17,7 +17,7 @@ const resultSection = document.querySelector("#outgoing");
 const delete_btn = document.querySelector("#delete");
 
 
-const apiKey = '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'; //  OpenAI API key
+const apiKey = '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'; //  OpenAI API key
 let userText;
 
 
@@ -96,7 +96,7 @@ const getChatResponse = async(incomingChatDiv)=>{
         line.trim().endsWith(';') ||
         (line.trim().startsWith('<') && line.trim().endsWith('>'))
     );
-    console.log(isCode);
+    // console.log(isCode);
 
     if (isCode) {
      textSecElement.style.whiteSpace = 'pre';
@@ -141,7 +141,6 @@ function copiedCode(){
 
     if (body.classList.length === 0){
         incoming.forEach(element => {
-            console.log("meeeee")
             element.parentElement.style.backgroundColor="red !important";
         });
     }
@@ -164,7 +163,7 @@ function copiedCode(){
            }
 
         //  save data on localstorage
-           console.log(resultSection)
+        //    console.log(resultSection)
            localStorage.setItem("all-chats",resultSection.innerHTML);
 
 
@@ -203,7 +202,7 @@ const handleoutgoingChat =()=>{
 
     userText =  chatInput.value.trim();
     if (!userText) return;
-    console.log(userText)
+    // console.log(userText)
 
     const html=`
                     <div class="ques_container">
@@ -287,7 +286,6 @@ const toggleBtn = document.getElementById('toggleBtn');
 }
 
 function toggleMode() {
-    console.log("function clicked");
     if (body.classList.length === 0){
             body.classList.add('light-mode');
             toggleBtn.innerHTML = 'toggle_on';
@@ -306,7 +304,6 @@ function toggleMode() {
             localStorage.setItem('mode', 'light-mode');
         }
     else if (body.classList.contains('dark-mode')) {
-        console.log("first mode clicked")
             body.classList.remove('dark-mode');
             body.classList.add('light-mode');
             toggleBtn.innerHTML = 'toggle_on';
@@ -327,7 +324,6 @@ function toggleMode() {
 
     
     } else {
-            console.log("second tep")
             body.classList.remove('light-mode');
             body.classList.add('dark-mode');
             toggleBtn.innerHTML = 'toggle_off';
