@@ -17,7 +17,7 @@ const resultSection = document.querySelector("#outgoing");
 const delete_btn = document.querySelector("#delete");
 
 
-const apiKey = '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'; //  OpenAI API key
+const apiKey = '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'; //  OpenAI API key
 let userText;
 
 
@@ -136,9 +136,16 @@ function copiedCode(){
     paraElemnt.appendChild(incomingChatDiv);
     incomingChatDiv.querySelector("#UserName").textContent="DevHelperAI";
 
-    // backgroudnd color set answer section
+    //  set backgroudnd color answer section
     const incoming= document.querySelectorAll(".incoming");
-    if (body.classList.contains('dark-mode')) {
+
+    if (body.classList.length === 0){
+        incoming.forEach(element => {
+            console.log("meeeee")
+            element.parentElement.style.backgroundColor="red !important";
+        });
+    }
+    else if (body.classList.contains('dark-mode')) {
         incoming.forEach(element => {
             element.parentElement.style.backgroundColor="rgb(35 35 35)";
         });
@@ -278,47 +285,68 @@ const toggleBtn = document.getElementById('toggleBtn');
    });
 
 }
+
 function toggleMode() {
-   if (body.classList.contains('dark-mode')) {
-   body.classList.remove('dark-mode');
-   body.classList.add('light-mode');
-   toggleBtn.innerHTML = 'toggle_on';
+    console.log("function clicked");
+    if (body.classList.length === 0){
+            body.classList.add('light-mode');
+            toggleBtn.innerHTML = 'toggle_on';
 
-   chatInput.style.backgroundColor="rgb(230, 230, 250)";
-   chatInput.style.color="black";
-   document.querySelector("#mic").style.color="black";
-   document.querySelector("#send_btn").style.color="black";
-   
-   //  color for answer div
-   const incoming= document.querySelectorAll(".incoming");
-    incoming.forEach(element => {
-        element.parentElement.style.backgroundColor="rgb(230, 230, 250)"; 
-    });
+            chatInput.style.backgroundColor="rgb(230, 230, 250)";
+            chatInput.style.color="black";
+            document.querySelector("#mic").style.color="black";
+            document.querySelector("#send_btn").style.color="black";
 
-   localStorage.setItem('mode', 'light-mode');
+               //  color for answer div
+               const incoming= document.querySelectorAll(".incoming");
+               incoming.forEach(element => {
+                   element.parentElement.style.backgroundColor="rgb(230, 230, 250)"; 
+               });
+
+            localStorage.setItem('mode', 'light-mode');
+        }
+    else if (body.classList.contains('dark-mode')) {
+        console.log("first mode clicked")
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            toggleBtn.innerHTML = 'toggle_on';
+
+            chatInput.style.backgroundColor="rgb(230, 230, 250)";
+            chatInput.style.color="black";
+            document.querySelector("#mic").style.color="black";
+            document.querySelector("#send_btn").style.color="black";
+            
+            //  color for answer div
+            const incoming= document.querySelectorAll(".incoming");
+                incoming.forEach(element => {
+                    element.parentElement.style.backgroundColor="rgb(230, 230, 250)"; 
+                });
+
+            localStorage.setItem('mode', 'light-mode');
 
 
-   
-} else {
-   body.classList.remove('light-mode');
-   body.classList.add('dark-mode');
-   toggleBtn.innerHTML = 'toggle_off';
-   toggleBtn.style.color = '#ffbb00'; // Set dark mode icon color
+    
+    } else {
+            console.log("second tep")
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            toggleBtn.innerHTML = 'toggle_off';
+            toggleBtn.style.color = '#ffbb00'; // Set dark mode icon color
 
-   chatInput.style.backgroundColor="#333";
-    chatInput.style.color="white";
-    document.querySelector("#mic").style.color="white";
-   document.querySelector("#send_btn").style.color="white";
+            chatInput.style.backgroundColor="#333";
+                chatInput.style.color="white";
+                document.querySelector("#mic").style.color="white";
+            document.querySelector("#send_btn").style.color="white";
 
-   //    color for answer div
-   const incoming= document.querySelectorAll(".incoming");
-    incoming.forEach(element => {
-        element.parentElement.style.backgroundColor="rgb(35 35 35)"; 
-    });
+            //    color for answer div
+            const incoming= document.querySelectorAll(".incoming");
+                incoming.forEach(element => {
+                    element.parentElement.style.backgroundColor="rgb(35 35 35)"; 
+                });
 
-   localStorage.setItem('mode', 'dark-mode');
-   
-}
+            localStorage.setItem('mode', 'dark-mode');
+            
+            }
 }
 
 // delete data to local storage
@@ -354,7 +382,11 @@ function runSpeechRecognition() {
     // This runs when the speech recognition service returns result
     recognition.onresult = function(event) {
         var transcript = event.results[0][0].transcript;
-        document.querySelector("#mic").style.color="white";
+        if (body.classList.contains('dark-mode')) {
+            document.querySelector("#mic").style.color="white";
+        }else{
+            document.querySelector("#mic").style.color="black";
+        }
         document.querySelector("#send_btn").style.color="green";
         action.value =  transcript ;
         action.classList.remove("hide");
