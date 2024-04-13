@@ -17,7 +17,7 @@ const resultSection = document.querySelector("#outgoing");
 const delete_btn = document.querySelector("#delete");
 
 
-const apiKey = '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'; //  OpenAI API key
+const apiKey = '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'; //  OpenAI API key
 let userText;
 
 
@@ -71,7 +71,7 @@ const getChatResponse = async(incomingChatDiv)=>{
     try{
         const  response = await(await fetch(API_URL,requestOptions)).json();
         dat_el= response.choices[0].text.trim();
-        // console.log(dat_el);
+        console.log(dat_el);    
 
         // Decode HTML entities
         const tempElement = document.createElement('div');
